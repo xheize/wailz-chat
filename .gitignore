@@ -21,3 +21,9 @@
 go.work
 
 .vscode
+
+__pycache__
+
+build/bin
+node_modules
+chat/frontend/dist/

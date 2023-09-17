@@ -1,58 +1,45 @@
 <script lang="ts">
   import logo from './assets/images/logo-universal.png'
-  import {Greet} from '../wailsjs/go/main/App.js'
+  import {Login} from '../wailsjs/go/main/App.js'
 
-  let resultText: string = "Please enter your name below 👇"
+  let resultText: string = ""
   let name: string
+  let passwd: string
 
-  function greet(): void {
-    Greet(name).then(result => resultText = result)
+  function login(): void {
+    if (passwd == undefined || name == undefined) {
+      alert("올바르게 입력하시오")
+      return
+    }
+    Login(name, passwd).then(result => {
+      resultText = result
+    })
   }
 </script>
 
 <main>
-  <img alt="Wails logo" id="logo" src="{logo}">
+  <h3>Private Chat</h3>
   <div class="result" id="result">{resultText}</div>
   <div class="input-box" id="input">
     <input autocomplete="off" bind:value={name} class="input" id="name" type="text"/>
-    <button class="btn" on:click={greet}>Greet</button>
+  </div>
+  <div class="input-box" id="password">
+    <input autocomplete="off" bind:value={passwd} class="input" id="passwd" type="text"/>
+  </div>
+  <div>
+    <button class="btn" on:click={login}>Greet</button>
   </div>
 </main>
 
 <style>
-
-  #logo {
-    display: block;
-    width: 50%;
-    height: 50%;
-    margin: auto;
-    padding: 10% 0 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-origin: content-box;
+  main {
+    overflow: hidden;
   }
 
   .result {
-    height: 20px;
+    height: auto;
     line-height: 20px;
     margin: 1.5rem auto;
-  }
-
-  .input-box .btn {
-    width: 60px;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 3px;
-    border: none;
-    margin: 0 0 0 20px;
-    padding: 0 8px;
-    cursor: pointer;
-  }
-
-  .input-box .btn:hover {
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-    color: #333333;
   }
 
   .input-box .input {

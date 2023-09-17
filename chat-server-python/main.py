@@ -1,0 +1,29 @@
+from typing import Union
+from pydantic import BaseModel
+from fastapi import FastAPI
+
+class loginReq(BaseModel):
+    name: str
+    passwd: str
+
+app = FastAPI()
+
+
+@app.get("/")
+def hearbeat():
+    return True
+
+
+@app.post("/login")
+def read_item(item: loginReq):
+    confirm = True
+    if not item.name == "xheize":
+        confirm = False
+    if not item.passwd == "test1234":
+        confirm = False
+    if not confirm:
+        return { "code": 2, "msg": "login fail"}
+    return { "code": 1, "msg": "login success"}
+
+
+if 
