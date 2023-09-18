@@ -59,3 +59,24 @@ func (a *App) Login(id string, password string) string {
 	// return fmt.Sprintf("Hello %s, It's show time!", id)
 }
 
+func (a *App) Login(id string, password string) string {
+	loginData := loginSet{Name: id, Password: password}
+	pbytes, _ := json.Marshal(loginData)
+	buff := bytes.NewBuffer(pbytes)
+	resp, err := http.Post("http://127.0.0.1:3000/login","application/json", buff)
+    if err != nil {
+        panic(err)
+    }
+ 
+    defer resp.Body.Close()
+ 
+    // 결과 출력
+    data, err := io.ReadAll(resp.Body)
+    if err != nil {
+        panic(err)
+    }
+	fmt.Println(string(data))
+    return fmt.Sprintf("%s\n", string(data))
+	// return fmt.Sprintf("Hello %s, It's show time!", id)
+}
+

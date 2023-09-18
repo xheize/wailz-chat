@@ -18,45 +18,58 @@
 </script>
 
 <main>
-  <div class="head">
+  <head>
     <div>
       <h3>접속 프로필</h3>
-      <div>
-        <button> </button>
-      </div>
     </div>
-  </div>
+  </head>
   <main>
-    <div></div>
+    <td>
+      <tr>
+        testing
+      </tr>
+    </td>
   </main>
-  <div class="sidebar">
+  <sidebar>
     <div>
       <div></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
-  </div>
+  </sidebar>
 </main>
 
 <style>
   main {
-    width: 100%;
-    height: 100%;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
   }
-  .head {
-    width: 100%;
-    height: 5rem;
-    border-bottom: 3px solid black;
-    
+
+  .result {
+    height: auto;
+    line-height: 20px;
+    margin: 1.5rem auto;
   }
-  .sidebar {
-    width: 100%;
-    height: 5rem;
-    border: 3px, 3px, 3px, 3px solid black;
+
+  .input-box .input {
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    background-color: rgba(240, 240, 240, 1);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .input-box .input:hover {
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .input-box .input:focus {
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
   }
 
 </style>

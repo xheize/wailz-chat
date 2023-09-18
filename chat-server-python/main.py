@@ -1,6 +1,6 @@
 from typing import Union
 from pydantic import BaseModel
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 
 class loginReq(BaseModel):
     name: str
@@ -25,5 +25,9 @@ def read_item(item: loginReq):
         return { "code": 2, "msg": "login fail"}
     return { "code": 1, "msg": "login success"}
 
-
-if 
+@app.websocket("/chat")
+async def websocket_endpoing(websocket: WebSocket):
+    await websocket.accept()
+    while True:
+        data = await websocket.receive_text()
+        await websocket.send_text(f"Message text was: {data}")
